@@ -22,6 +22,7 @@ switch (arg1) {
         client.get('statuses/user_timeline', function (error, tweets, response) {
             if (error) throw error;
             for (var i = 0; i < 3; i++) {
+                console.log("------------------------------------");
                 console.log("Tweet: " + tweets[i].text);
                 console.log("Time Stamp: " + tweets[i].user.created_at);
             }
@@ -32,10 +33,12 @@ switch (arg1) {
             if (err) {
                 return console.log('Error occurred: ' + err);
             }
+            console.log("------------------------------------");
             console.log("Artist(s): " + data.tracks.items[0].artists[0].name);
             console.log("Song Title: " + data.tracks.items[0].name);
             console.log("Listen Here: " + data.tracks.items[0].album.external_urls.spotify);
             console.log("Name of Album: " + data.tracks.items[0].album.name);
+            console.log("------------------------------------");
         });
         break;
     case 'movie-this':
@@ -45,6 +48,7 @@ switch (arg1) {
             if (!error && response.statusCode === 200) {
                 // Parse the body of the site and recover just the imdbRating
                 // (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
+                console.log("------------------------------------");
                 console.log("Title: " + JSON.parse(body).Title);
                 console.log("Release Year: " + JSON.parse(body).Year);
                 console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
@@ -52,6 +56,7 @@ switch (arg1) {
                 console.log("Country: " + JSON.parse(body).Country);
                 console.log("Plot: " + JSON.parse(body).Plot);
                 console.log("Actors: " + JSON.parse(body).Actors);
+                console.log("------------------------------------");
                 // console.log(JSON.parse(body));
             }
         });
