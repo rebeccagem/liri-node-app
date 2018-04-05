@@ -20,14 +20,22 @@ switch (arg1) {
     case 'my-tweets':
         client.get('statuses/user_timeline', function (error, tweets, response) {
             if (error) throw error;
-                 for (var i = 0; i < 3; i++) {
-                    console.log("Tweet: " + tweets[i].text);
-                    console.log("Time Stamp: " + tweets[i].user.created_at);
+            for (var i = 0; i < 3; i++) {
+                console.log("Tweet: " + tweets[i].text);
+                console.log("Time Stamp: " + tweets[i].user.created_at);
             }
         });
         break;
     case 'this-song':
-        console.log("spotify");
+        spotify.search({ type: 'track', query: 'All the Small Things' }, function (err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            }
+            console.log("Artist(s): "+data.tracks.items[0].artists[0].name);
+            console.log("Song Title: "+data.tracks.items[0].name);
+            console.log("Listen Here: "+data.tracks.items[0].album.external_urls.spotify);
+            console.log("Name of Album: "+data.tracks.items[0].album.name);
+        });
         break;
     case 'movie-this':
         console.log("omdb");
