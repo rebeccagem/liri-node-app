@@ -20,10 +20,10 @@ switch (arg1) {
     case 'my-tweets':
         client.get('statuses/user_timeline', function (error, tweets, response) {
             if (error) throw error;
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 10; i++) {
                 console.log("------------------------------------");
                 console.log("Tweet: " + tweets[i].text);
-                console.log("Time Stamp: " + tweets[i].user.created_at);
+                console.log("Time Stamp: " + tweets[i].created_at);
             }
         });
         break;
